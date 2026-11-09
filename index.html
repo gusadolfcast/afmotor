@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AF MOTORS | Compraventa de Motocicletas de Alta Gama</title>
+    <meta name="description" content="AF MOTORS - Compra y venta de motocicletas de gama media-alta y alta en Medellín y Bello. Confianza, agilidad en trámites y entrega a domicilio.">
+    
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        af: {
+                            black: '#03080C',
+                            gray: '#1E1F26',
+                            white: '#FFFFFF',
+                            silver: '#E3E8ED',
+                            red: '#FF0000',
+                            redHover: '#CC0000'
+                        }
+                    },
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(3, 8, 12, 0.9), rgba(30, 31, 38, 0.8)), url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+                        'cta-pattern': "linear-gradient(to right, rgba(255, 0, 0, 0.9), rgba(3, 8, 12, 0.9)), url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"
+                    }
+                }
+            }
+        }
+    </script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-roboto antialiased flex flex-col min-h-screen">
+
+    <header class="fixed w-full z-50 bg-af-black/95 backdrop-blur-sm border-b border-af-gray transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="navigate('inicio')">
+                    <img src="img/logoempresa.png"
+                        onerror="this.src='https://placehold.co/250x80/1E1F26/FFFFFF?text=ESPACIO+LOGO+AQUI'" 
+                        alt="AF Motors Logo" 
+                        class="h-16 w-auto object-contain">
+                </div>
+
+            
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="nav-link text-af-silver hover:text-af-red font-montserrat font-semibold text-sm uppercase transition-colors duration-200">Inicio</a>
+                    <a href="#catalogo" class="nav-link text-af-silver hover:text-af-red font-montserrat font-semibold text-sm uppercase transition-colors duration-200">Inventario</a>
+                    <a href="#servicios" class="nav-link text-af-silver hover:text-af-red font-montserrat font-semibold text-sm uppercase transition-colors duration-200">Servicios</a>
+                    <a href="#nosotros" class="nav-link text-af-silver hover:text-af-red font-montserrat font-semibold text-sm uppercase transition-colors duration-200">Nosotros</a>
+                    <a href="#contacto" class="nav-link text-af-silver hover:text-af-red font-montserrat font-semibold text-sm uppercase transition-colors duration-200">Contacto</a>
+                </nav>
+
+        
+                <div class="hidden md:flex items-center">
+                    <a href="#catalogo" class="bg-af-red hover:bg-af-redHover text-white font-montserrat font-bold py-2 px-6 rounded-md transition-all shadow-[0_0_15px_rgba(255,0,0,0.4)] hover:shadow-[0_0_25px_rgba(255,0,0,0.6)]">
+                        Comprar Moto
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-af-silver hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-af-gray border-t border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#inicio" class="mobile-nav-link block px-3 py-2 text-base font-montserrat font-semibold text-white hover:bg-af-red rounded-md">Inicio</a>
+                <a href="#catalogo" class="mobile-nav-link block px-3 py-2 text-base font-montserrat font-semibold text-af-silver hover:text-white hover:bg-af-red rounded-md">Inventario</a>
+                <a href="#servicios" class="mobile-nav-link block px-3 py-2 text-base font-montserrat font-semibold text-af-silver hover:text-white hover:bg-af-red rounded-md">Servicios</a>
+                <a href="#nosotros" class="mobile-nav-link block px-3 py-2 text-base font-montserrat font-semibold text-af-silver hover:text-white hover:bg-af-red rounded-md">Nosotros</a>
+                <a href="#contacto" class="mobile-nav-link block px-3 py-2 text-base font-montserrat font-semibold text-af-silver hover:text-white hover:bg-af-red rounded-md">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container (SPA Router Target) -->
+    <main class="flex-grow pt-20">
+
+        <!-- ================= VISTA: INICIO ================= -->
+        <section id="inicio" class="page-view active fade-in">
+            <!-- Hero Section -->
+            <div class="relative bg-hero-pattern bg-cover bg-center h-[90vh] flex items-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-af-black via-af-black/80 to-transparent"></div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div class="max-w-2xl">
+                        <span class="inline-block py-1 px-3 rounded-full bg-af-gray border border-af-red text-af-red font-montserrat text-sm font-bold tracking-wider mb-4">
+                            BIENVENIDO A AF MOTORS
+                        </span>
+                        <h1 class="text-5xl md:text-7xl font-montserrat font-black text-white leading-tight mb-6">
+                            POTENCIA Y <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-af-red to-red-400">CONFIANZA</span>
+                        </h1>
+                        <p class="text-xl text-af-silver mb-8 font-light">
+                            Encuentra la motocicleta ideal para tu próximo camino. Especialistas en gama media-alta y alta con procesos ágiles, seguros y transparentes.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#catalogo" class="text-center bg-af-red hover:bg-af-redHover text-white font-montserrat font-bold py-4 px-8 rounded-md transition-all shadow-[0_0_20px_rgba(255,0,0,0.4)]">
+                                Ver Inventario
+                            </a>
+                            <a href="#servicios" class="text-center bg-transparent border-2 border-white hover:border-af-red hover:text-af-red text-white font-montserrat font-bold py-4 px-8 rounded-md transition-all">
+                                Vender mi Moto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Quick View -->
+            <div class="bg-af-gray py-12 border-b border-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="flex items-center space-x-4 p-4 rounded-lg hover:bg-af-black transition-colors duration-300">
+                            <div class="bg-af-black p-4 rounded-full text-af-red border border-gray-800">
+                                <i class="fa-solid fa-file-signature text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-montserrat font-bold text-lg">Trámites Ágiles</h3>
+                                <p class="text-sm text-af-silver">Gestión rápida de documentación y traspasos.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 p-4 rounded-lg hover:bg-af-black transition-colors duration-300">
+                            <div class="bg-af-black p-4 rounded-full text-af-red border border-gray-800">
+                                <i class="fa-solid fa-shield-check text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-montserrat font-bold text-lg">Compra Segura</h3>
+                                <p class="text-sm text-af-silver">Vehículos peritados y certificados por aliados.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 p-4 rounded-lg hover:bg-af-black transition-colors duration-300">
+                            <div class="bg-af-black p-4 rounded-full text-af-red border border-gray-800">
+                                <i class="fa-solid fa-truck-fast text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-montserrat font-bold text-lg">Entrega a Domicilio</h3>
+                                <p class="text-sm text-af-silver">Tu moto lista para rodar, entregada en tu puerta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Motos Preview -->
+            <div class="py-20 bg-af-black">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-end mb-12">
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-montserrat font-bold heading-accent">Novedades Destacadas</h2>
+                            <p class="mt-4 text-af-silver">Las joyas de nuestro inventario recién llegadas a sala.</p>
+                        </div>
+                        <a href="#catalogo" class="hidden md:block text-af-red hover:text-white font-montserrat font-bold transition-colors">
+                            Ver todo el catálogo <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Dynamic Grid preview (First 3 items) -->
+                    <div id="featured-motos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Injected by JS -->
+                    </div>
+                    
+                    <div class="mt-10 text-center md:hidden">
+                        <a href="#catalogo" class="inline-block bg-af-gray border border-gray-700 hover:border-af-red text-white font-montserrat font-bold py-3 px-6 rounded transition-all">
+                            Ver todo el catálogo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISTA: CATÁLOGO ================= -->
+        <section id="catalogo" class="page-view fade-in bg-af-black min-h-screen py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-montserrat font-black mb-4">INVENTARIO <span class="text-af-red">ACTUAL</span></h1>
+                    <p class="text-af-silver max-w-2xl mx-auto">Explora nuestra selección de motocicletas de gama media-alta y alta. Precios sujetos a negociación y peritaje.</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="bg-af-gray p-4 rounded-lg mb-8 flex flex-col md:flex-row justify-between items-center gap-4 border border-gray-800">
+                    <div class="flex items-center space-x-2 w-full md:w-auto">
+                        <i class="fa-solid fa-filter text-af-red"></i>
+                        <span class="font-montserrat font-bold">Filtros:</span>
+                    </div>
+                    <div class="w-full md:w-auto flex-grow flex gap-4">
+                        <select id="filter-marca" class="w-full md:w-48 bg-af-black border border-gray-700 text-white rounded p-2 focus:outline-none focus:border-af-red">
+                            <option value="all">Todas las Marcas</option>
+                            <option value="Yamaha">Yamaha</option>
+                            <option value="KTM">KTM</option>
+                            <option value="Honda">Honda</option>
+                            <option value="BMW">BMW</option>
+                        </select>
+                        <select id="filter-condicion" class="w-full md:w-48 bg-af-black border border-gray-700 text-white rounded p-2 focus:outline-none focus:border-af-red">
+                            <option value="all">Condición</option>
+                            <option value="Nueva">Nueva</option>
+                            <option value="Usada">Usada</option>
+                        </select>
+                    </div>
+                    <div class="w-full md:w-auto text-sm text-af-silver font-montserrat">
+                        <span id="contador-motos" class="font-bold text-white">0</span> vehículos disponibles
+                    </div>
+                </div>
+
+                <!-- Full Catalog Grid -->
+                <div id="full-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Injected by JS -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="hidden text-center py-20">
+                    <i class="fa-solid fa-motorcycle text-6xl text-gray-700 mb-4"></i>
+                    <h3 class="text-2xl font-montserrat font-bold mb-2">No hay resultados</h3>
+                    <p class="text-af-silver">No encontramos motocicletas que coincidan con los filtros seleccionados.</p>
+                    <button onclick="resetFilters()" class="mt-4 text-af-red hover:text-white underline">Limpiar filtros</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISTA: SERVICIOS ================= -->
+        <section id="servicios" class="page-view fade-in">
+            <!-- Header -->
+            <div class="bg-af-gray py-20 border-b border-gray-800 text-center">
+                <h1 class="text-4xl md:text-5xl font-montserrat font-black mb-4">NUESTROS <span class="text-af-red">SERVICIOS</span></h1>
+                <p class="text-af-silver max-w-2xl mx-auto px-4">Brindamos una experiencia integral para que comprar o vender tu motocicleta sea un proceso seguro y sin complicaciones.</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="py-20 bg-af-black border-b border-gray-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Compra -->
+                        <div class="bg-af-gray rounded-xl p-8 border border-gray-800 hover:border-af-red transition-all duration-300 relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 -mr-8 -mt-8 text-9xl text-af-black opacity-50 group-hover:text-af-red/10 transition-colors duration-500">
+                                <i class="fa-solid fa-key"></i>
+                            </div>
+                            <h3 class="text-2xl font-montserrat font-bold mb-4 relative z-10">Compra de Motocicletas</h3>
+                            <p class="text-af-silver mb-6 relative z-10">Te asesoramos para encontrar la moto de gama media-alta o alta que se ajuste a tus necesidades. Garantizamos la procedencia legal y mecánica de cada vehículo.</p>
+                            <ul class="space-y-3 mb-8 relative z-10 text-sm">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-af-red mr-3"></i> Asesoría personalizada.</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-af-red mr-3"></i> Opciones de financiamiento (Simulación disponible).</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-af-red mr-3"></i> Entrega a domicilio con papeles al día.</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Venta -->
+                        <div class="bg-af-gray rounded-xl p-8 border border-gray-800 hover:border-af-red transition-all duration-300 relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 -mr-8 -mt-8 text-9xl text-af-black opacity-50 group-hover:text-af-red/10 transition-colors duration-500">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                            </div>
+                            <h3 class="text-2xl font-montserrat font-bold mb-4 relative z-10">Vende tu Motocicleta</h3>
+                            <p class="text-af-silver mb-6 relative z-10">Compramos tu moto de alto cilindraje. Ofrecemos valoraciones justas y nos encargamos de todo el papeleo para tu tranquilidad.</p>
+                            <ul class="space-y-3 mb-8 relative z-10 text-sm">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-af-red mr-3"></i> Peritaje experto con aliados.</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-af-red mr-3"></i> Pago rápido y seguro.</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-af-red mr-3"></i> Nos encargamos del traspaso.</li>
+                            </ul>
+                            <a href="https://wa.me/573000000000?text=Hola,%20quiero%20vender%20mi%20moto" target="_blank" class="inline-block bg-transparent border border-af-red text-af-red hover:bg-af-red hover:text-white font-montserrat font-bold py-2 px-6 rounded transition-all relative z-10">
+                                Cotizar mi Moto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SIMULADOR FINANCIERO (LÓGICA JAVA) ================= -->
+            <div class="py-20 bg-af-gray">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-montserrat font-black mb-4">SIMULADOR DE <span class="text-af-red">COMPRA</span></h2>
+                        <p class="text-af-silver max-w-2xl mx-auto">Calcula tu plan de financiamiento. Sistema con descuentos automáticos según el valor del vehículo.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Formulario Simulador -->
+                        <div class="bg-af-black p-8 rounded-xl border border-gray-800">
+                            <form id="simulador-form" onsubmit="simularCompra(event)" class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Selecciona la Motocicleta</label>
+                                    <select id="simulador-moto" required class="w-full bg-af-gray border border-gray-700 rounded py-3 px-4 text-white focus:outline-none focus:border-af-red transition-colors">
+                                        <!-- Opciones cargadas por JS -->
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Modalidad de Pago (Cuotas)</label>
+                                    <select id="simulador-cuotas" required class="w-full bg-af-gray border border-gray-700 rounded py-3 px-4 text-white focus:outline-none focus:border-af-red transition-colors">
+                                        <option value="1">De Contado (1 cuota)</option>
+                                        <option value="12">12 Meses</option>
+                                        <option value="24">24 Meses</option>
+                                        <option value="36">36 Meses</option>
+                                        <option value="48">48 Meses</option>
+                                        <option value="60">60 Meses</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="w-full bg-af-red hover:bg-af-redHover text-white font-montserrat font-bold py-4 px-4 rounded transition-colors shadow-[0_0_15px_rgba(255,0,0,0.4)]">
+                                    <i class="fa-solid fa-calculator mr-2"></i> Calcular Financiamiento
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Resultados Simulador -->
+                        <div id="simulador-resultados" class="bg-af-black p-8 rounded-xl border border-gray-800 hidden">
+                            <h3 class="text-xl font-montserrat font-bold text-center border-b border-gray-700 pb-4 mb-4">DESGLOSE DE COTIZACIÓN</h3>
+                            
+                            <div class="space-y-3 font-roboto text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Vehículo:</span>
+                                    <span id="sim-vehiculo" class="font-bold text-white text-right"></span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Precio Lista:</span>
+                                    <span id="sim-precio" class="font-bold text-white"></span>
+                                </div>
+                                <div class="flex justify-between text-green-400">
+                                    <span>Descuento (<span id="sim-desc-porcentaje"></span>):</span>
+                                    <span id="sim-desc-valor" class="font-bold"></span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Subtotal:</span>
+                                    <span id="sim-subtotal" class="font-bold text-white"></span>
+                                </div>
+                                <div class="flex justify-between text-gray-300">
+                                    <span>IVA (19%):</span>
+                                    <span id="sim-iva" class="font-bold"></span>
+                                </div>
+                                <div class="border-t border-gray-700 pt-4 mt-2 flex justify-between items-center">
+                                    <span class="text-white font-montserrat font-bold">TOTAL A PAGAR:</span>
+                                    <span id="sim-total" class="text-2xl font-montserrat font-black text-af-red"></span>
+                                </div>
+                                <div class="bg-af-gray p-4 rounded mt-4 text-center border border-gray-700">
+                                    <span class="text-gray-400 block mb-1 text-xs uppercase tracking-wider">Plan de Financiamiento</span>
+                                    <span id="sim-cuotas-res" class="text-white font-bold text-lg"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Banner -->
+            <div class="bg-cta-pattern bg-cover bg-center py-16">
+                <div class="max-w-4xl mx-auto px-4 text-center">
+                    <h2 class="text-3xl font-montserrat font-bold text-white mb-4">¿Listo para acelerar tu próxima aventura?</h2>
+                    <p class="text-lg text-gray-200 mb-8">Nuestros asesores están listos para ayudarte con la documentación, el peritaje y la entrega en la puerta de tu casa.</p>
+                    <a href="#contacto" class="inline-block bg-white text-af-black hover:bg-gray-200 font-montserrat font-bold py-3 px-8 rounded shadow-lg transition-all">
+                        Contáctanos Hoy
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISTA: NOSOTROS ================= -->
+        <section id="nosotros" class="page-view fade-in">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="lg:w-1/2">
+                        <h2 class="text-4xl font-montserrat font-black heading-accent mb-6">Nuestra <span class="text-af-red">Historia</span></h2>
+                        <div class="space-y-4 text-af-silver text-lg font-light">
+                            <p>
+                                AF MOTORS inició sus actividades hace aproximadamente un año como resultado de una visión de emprendimiento. Con experiencia previa en Centros de Diagnóstico Automotor (CDA), identificamos una oportunidad única.
+                            </p>
+                            <p>
+                                Muchas personas necesitaban un acompañamiento real, seguro y transparente al comprar o vender motocicletas de alta gama. Así nació AF MOTORS, con el objetivo de eliminar la fricción, el miedo y la burocracia del proceso.
+                            </p>
+                            <p class="font-medium text-white">
+                                Ofrecemos mucho más que una motocicleta: brindamos una experiencia de compraventa confiable y adaptada a tus necesidades.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 w-full">
+                        <div class="relative rounded-lg overflow-hidden shadow-[0_0_30px_rgba(255,0,0,0.15)]">
+                            <!-- ESPACIO PARA LOGO SECUNDARIO (NOSOTROS):
+                                Aquí va la versión clara o el emblema con la motocicleta. -->
+                            <img src="img/logoempresa.png"
+                                onerror="this.src='https://placehold.co/600x600/1E1F26/FFFFFF?text=ESPACIO+LOGO+CUADRADO+AQUI'"
+                                alt="AF Motors Emblema Blanco"
+                                class="w-full h-auto object-cover bg-white p-8">
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
+                    <div class="bg-af-gray p-8 rounded-lg border-t-4 border-af-red">
+                        <h3 class="text-2xl font-montserrat font-bold mb-4"><i class="fa-solid fa-bullseye text-af-red mr-2"></i> Misión</h3>
+                        <p class="text-af-silver">Ofrecer soluciones confiables en la compra y venta de motocicletas, brindando a nuestros clientes una experiencia ágil, segura y transparente. Nos enfocamos en comercializar motocicletas de excelente calidad y alta demanda, acompañando cada negociación con asesoría personalizada y respaldo experto.</p>
+                    </div>
+                    <div class="bg-af-gray p-8 rounded-lg border-t-4 border-white">
+                        <h3 class="text-2xl font-montserrat font-bold mb-4"><i class="fa-solid fa-eye text-white mr-2"></i> Visión</h3>
+                        <p class="text-af-silver">Para el año 2030, buscamos consolidarnos como una de las compraventas más reconocidas y confiables de Medellín y su área metropolitana. A largo plazo, aspiramos expandir nuestra presencia a nivel nacional, siendo referentes en transparencia e innovación en el sector.</p>
+                    </div>
+                </div>
+
+                <div class="mt-20">
+                    <h2 class="text-3xl font-montserrat font-bold text-center mb-12">Nuestros Valores Corporativos</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div class="bg-af-black p-6 rounded border border-gray-800 text-center hover:border-af-red transition-colors">
+                            <i class="fa-solid fa-handshake text-3xl text-af-red mb-3"></i>
+                            <h4 class="font-montserrat font-bold mb-2">Transparencia</h4>
+                            <p class="text-xs text-af-silver">Información clara en cada negociación.</p>
+                        </div>
+                        <div class="bg-af-black p-6 rounded border border-gray-800 text-center hover:border-af-red transition-colors">
+                            <i class="fa-solid fa-shield-heart text-3xl text-af-red mb-3"></i>
+                            <h4 class="font-montserrat font-bold mb-2">Confianza</h4>
+                            <p class="text-xs text-af-silver">Tranquilidad durante todo el proceso.</p>
+                        </div>
+                        <div class="bg-af-black p-6 rounded border border-gray-800 text-center hover:border-af-red transition-colors">
+                            <i class="fa-solid fa-hand-fist text-3xl text-af-red mb-3"></i>
+                            <h4 class="font-montserrat font-bold mb-2">Compromiso</h4>
+                            <p class="text-xs text-af-silver">Cumplimos lo que acordamos contigo.</p>
+                        </div>
+                        <div class="bg-af-black p-6 rounded border border-gray-800 text-center hover:border-af-red transition-colors">
+                            <i class="fa-solid fa-file-contract text-3xl text-af-red mb-3"></i>
+                            <h4 class="font-montserrat font-bold mb-2">Responsabilidad</h4>
+                            <p class="text-xs text-af-silver">Gestión impecable de documentación.</p>
+                        </div>
+                        <div class="bg-af-black p-6 rounded border border-gray-800 text-center hover:border-af-red transition-colors">
+                            <i class="fa-solid fa-bolt text-3xl text-af-red mb-3"></i>
+                            <h4 class="font-montserrat font-bold mb-2">Agilidad</h4>
+                            <p class="text-xs text-af-silver">Procesos rápidos de compra y entrega.</p>
+                        </div>
+                        <div class="bg-af-black p-6 rounded border border-gray-800 text-center hover:border-af-red transition-colors">
+                            <i class="fa-solid fa-award text-3xl text-af-red mb-3"></i>
+                            <h4 class="font-montserrat font-bold mb-2">Calidad</h4>
+                            <p class="text-xs text-af-silver">Motocicletas que superan expectativas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISTA: CONTACTO ================= -->
+        <section id="contacto" class="page-view fade-in">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl md:text-5xl font-montserrat font-black mb-4">PONTE EN <span class="text-af-red">CONTACTO</span></h1>
+                    <p class="text-af-silver max-w-2xl mx-auto">Visítanos en nuestra sede física o escríbenos por redes sociales. Estamos disponibles para resolver cualquier duda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Info & Map -->
+                    <div class="space-y-8">
+                        <div class="bg-af-gray p-6 rounded-lg border border-gray-800">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-af-black p-3 rounded text-af-red">
+                                    <i class="fa-solid fa-location-dot text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-montserrat font-bold mb-1">Ubicación</h4>
+                                    <p class="text-af-silver text-sm">Diagonal 51 #42-128<br>Ciudad Niquía, Bello, Antioquia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-af-gray p-6 rounded-lg border border-gray-800">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-af-black p-3 rounded text-af-red">
+                                    <i class="fa-solid fa-clock text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-montserrat font-bold mb-1">Horario de Atención Físico</h4>
+                                    <p class="text-af-silver text-sm">Lunes a Sábado<br>9:00 a.m. a 6:00 p.m.</p>
+                                    <p class="text-af-red text-xs mt-2 font-bold">Atención Digital: 24 Horas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-af-gray p-6 rounded-lg border border-gray-800">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-af-black p-3 rounded text-af-red">
+                                    <i class="fa-brands fa-instagram text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-montserrat font-bold mb-1">Redes Sociales</h4>
+                                    <a href="https://instagram.com/compraventaaf_motors" target="_blank" class="text-af-silver hover:text-white text-sm transition-colors">
+                                        @compraventaaf_motors
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+        
+                        <div class="w-full h-64 bg-gray-800 rounded-lg overflow-hidden border border-gray-700 relative">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.441594517286!2d-75.55151262524862!3d6.336801793652763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442f98c4555571%3A0x5c8ca8d97ad79789!2sDg.%2051%20%2342-128%2C%20Ciudad%20Niquia%2C%20Bello%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1794126645357!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                            <div class="absolute inset-0 flex items-center justify-center flex-col text-gray-500">
+                                <i class="fa-solid fa-map-location-dot text-4xl mb-2"></i>
+                                <span class="font-montserrat text-sm">Mapa: Ciudad Niquía, Bello</span>
+                            </div>
+                        </div>
+                    </div>
+
+            
+                    <div class="bg-af-gray p-8 rounded-lg border border-gray-800">
+                        <h3 class="text-2xl font-montserrat font-bold mb-6">Envíanos un Mensaje</h3>
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-1">Nombre Completo</label>
+                                <input type="text" required class="w-full bg-af-black border border-gray-700 rounded py-3 px-4 text-white focus:outline-none focus:border-af-red transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-1">Teléfono / WhatsApp</label>
+                                <input type="tel" required class="w-full bg-af-black border border-gray-700 rounded py-3 px-4 text-white focus:outline-none focus:border-af-red transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-1">Asunto</label>
+                                <select class="w-full bg-af-black border border-gray-700 rounded py-3 px-4 text-white focus:outline-none focus:border-af-red transition-colors">
+                                    <option>Me interesa comprar una moto</option>
+                                    <option>Quiero vender mi moto</option>
+                                    <option>Pregunta general</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-1">Mensaje</label>
+                                <textarea rows="4" required class="w-full bg-af-black border border-gray-700 rounded py-3 px-4 text-white focus:outline-none focus:border-af-red transition-colors"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-af-red hover:bg-af-redHover text-white font-montserrat font-bold py-3 px-4 rounded transition-colors shadow-lg">
+                                Enviar Mensaje
+                            </button>
+                            <p id="form-success" class="hidden text-green-500 text-sm text-center mt-4">¡Mensaje enviado con éxito! Te contactaremos pronto.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-af-black border-t border-gray-900 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <img src="img/logoempresa.png" 
+                        onerror="this.src='https://placehold.co/200x60/1E1F26/FFFFFF?text=ESPACIO+LOGO+AQUI'"
+                        alt="AF Motors Logo" 
+                        class="h-12 w-auto mb-4 object-contain">
+                    <p class="text-af-silver text-sm max-w-md">
+                        Compraventa de motocicletas de gama media-alta y alta. Transparencia, agilidad y confianza en cada negociación.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-montserrat font-bold text-white mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-sm text-af-silver">
+                        <li><a href="#inicio" class="hover:text-af-red transition-colors">Inicio</a></li>
+                        <li><a href="#catalogo" class="hover:text-af-red transition-colors">Inventario</a></li>
+                        <li><a href="#servicios" class="hover:text-af-red transition-colors">Servicios</a></li>
+                        <li><a href="#nosotros" class="hover:text-af-red transition-colors">Nosotros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-montserrat font-bold text-white mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/compraventaaf_motors" target="_blank" class="w-10 h-10 rounded-full bg-af-gray flex items-center justify-center text-af-silver hover:bg-af-red hover:text-white transition-all">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-af-gray flex items-center justify-center text-af-silver hover:bg-af-red hover:text-white transition-all">
+                            <i class="fa-brands fa-facebook-f text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; <span id="current-year"></span> AF MOTORS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/573000000000?text=Hola,%20vengo%20de%20la%20página%20web%20y%20necesito%20asesoría." 
+    target="_blank" 
+    class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+    aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+    <script src="main.js"></script>
+</body>
+</html>
